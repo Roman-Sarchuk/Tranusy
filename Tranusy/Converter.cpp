@@ -91,6 +91,8 @@ void Converter::toDecimal()
 
     // calc fractional res
     if (isFloat) {
+        piece1.append(" + ");
+        piece2.append(" + ");
         double fproduct;
         for (int i = 0, dr = -1, end = -((int)fractionalPart.size()); dr >= end; i++, dr--)
         {
