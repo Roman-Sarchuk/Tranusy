@@ -33,8 +33,8 @@ namespace UIcppProject {
 
 			// Switch mod panels
 			panel_s->Visible = true;
-			panel_m->Visible = false;
-			//s+h
+			//m
+			panel_sh->Visible = false;
 			//m+h
 		}
 
@@ -68,14 +68,33 @@ namespace UIcppProject {
 
 
 	private: System::Windows::Forms::Button^ button_s;
+	private: System::Windows::Forms::Panel^ panel_sh;
 
-	private: System::Windows::Forms::Panel^ panel_m;
-	private: System::Windows::Forms::Button^ button_m;
+
+
+	private: System::Windows::Forms::Button^ button_sh;
 
 	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel2;
-	private: System::Windows::Forms::TextBox^ res_m;
+	private: System::Windows::Forms::TextBox^ num_sh;
+	private: System::Windows::Forms::TextBox^ res_sh;
+	private: System::Windows::Forms::NumericUpDown^ from_sh;
+	private: System::Windows::Forms::NumericUpDown^ to_sh;
+	private: System::Windows::Forms::RichTextBox^ info_sh;
 
-	private: System::Windows::Forms::TextBox^ data_m;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	private:
 		/// <summary>
@@ -105,18 +124,23 @@ namespace UIcppProject {
 			this->res_s = (gcnew System::Windows::Forms::TextBox());
 			this->from_s = (gcnew System::Windows::Forms::NumericUpDown());
 			this->to_s = (gcnew System::Windows::Forms::NumericUpDown());
-			this->panel_m = (gcnew System::Windows::Forms::Panel());
-			this->button_m = (gcnew System::Windows::Forms::Button());
+			this->panel_sh = (gcnew System::Windows::Forms::Panel());
+			this->info_sh = (gcnew System::Windows::Forms::RichTextBox());
+			this->button_sh = (gcnew System::Windows::Forms::Button());
 			this->tableLayoutPanel2 = (gcnew System::Windows::Forms::TableLayoutPanel());
-			this->res_m = (gcnew System::Windows::Forms::TextBox());
-			this->data_m = (gcnew System::Windows::Forms::TextBox());
+			this->num_sh = (gcnew System::Windows::Forms::TextBox());
+			this->res_sh = (gcnew System::Windows::Forms::TextBox());
+			this->from_sh = (gcnew System::Windows::Forms::NumericUpDown());
+			this->to_sh = (gcnew System::Windows::Forms::NumericUpDown());
 			this->menuStrip1->SuspendLayout();
 			this->panel_s->SuspendLayout();
 			this->tableLayoutPanel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->from_s))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->to_s))->BeginInit();
-			this->panel_m->SuspendLayout();
+			this->panel_sh->SuspendLayout();
 			this->tableLayoutPanel2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->from_sh))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->to_sh))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -129,7 +153,7 @@ namespace UIcppProject {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(873, 30);
+			this->menuStrip1->Size = System::Drawing::Size(801, 30);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -139,6 +163,7 @@ namespace UIcppProject {
 				this->saveToolStripMenuItem,
 					this->importToolStripMenuItem
 			});
+			this->fileToolStripMenuItem->Enabled = false;
 			this->fileToolStripMenuItem->Name = L"fileToolStripMenuItem";
 			this->fileToolStripMenuItem->Size = System::Drawing::Size(46, 26);
 			this->fileToolStripMenuItem->Text = L"File";
@@ -168,6 +193,7 @@ namespace UIcppProject {
 			// 
 			// modToolStripMenuItem
 			// 
+			this->modToolStripMenuItem->Enabled = false;
 			this->modToolStripMenuItem->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Simple", L"Multiple" });
 			this->modToolStripMenuItem->Name = L"modToolStripMenuItem";
 			this->modToolStripMenuItem->Size = System::Drawing::Size(224, 28);
@@ -179,6 +205,7 @@ namespace UIcppProject {
 			this->stepsToolStripMenuItem->Name = L"stepsToolStripMenuItem";
 			this->stepsToolStripMenuItem->Size = System::Drawing::Size(298, 26);
 			this->stepsToolStripMenuItem->Text = L"Show steps";
+			this->stepsToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::stepsToolStripMenuItem_Click);
 			// 
 			// infoToolStripMenuItem
 			// 
@@ -195,7 +222,7 @@ namespace UIcppProject {
 			this->panel_s->Controls->Add(this->tableLayoutPanel1);
 			this->panel_s->Location = System::Drawing::Point(12, 46);
 			this->panel_s->Name = L"panel_s";
-			this->panel_s->Size = System::Drawing::Size(849, 548);
+			this->panel_s->Size = System::Drawing::Size(777, 180);
 			this->panel_s->TabIndex = 1;
 			// 
 			// button_s
@@ -206,7 +233,7 @@ namespace UIcppProject {
 				static_cast<System::Byte>(204)));
 			this->button_s->Location = System::Drawing::Point(3, 3);
 			this->button_s->Name = L"button_s";
-			this->button_s->Size = System::Drawing::Size(843, 40);
+			this->button_s->Size = System::Drawing::Size(771, 40);
 			this->button_s->TabIndex = 1;
 			this->button_s->Text = L"Convert";
 			this->button_s->UseVisualStyleBackColor = true;
@@ -230,7 +257,7 @@ namespace UIcppProject {
 			this->tableLayoutPanel1->RowCount = 2;
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->tableLayoutPanel1->Size = System::Drawing::Size(843, 116);
+			this->tableLayoutPanel1->Size = System::Drawing::Size(771, 116);
 			this->tableLayoutPanel1->TabIndex = 0;
 			// 
 			// num_s
@@ -239,7 +266,7 @@ namespace UIcppProject {
 			this->num_s->Location = System::Drawing::Point(3, 18);
 			this->num_s->Margin = System::Windows::Forms::Padding(3, 3, 10, 3);
 			this->num_s->Name = L"num_s";
-			this->num_s->Size = System::Drawing::Size(635, 22);
+			this->num_s->Size = System::Drawing::Size(580, 22);
 			this->num_s->TabIndex = 0;
 			// 
 			// res_s
@@ -249,106 +276,138 @@ namespace UIcppProject {
 			this->res_s->Margin = System::Windows::Forms::Padding(3, 3, 10, 3);
 			this->res_s->Name = L"res_s";
 			this->res_s->ReadOnly = true;
-			this->res_s->Size = System::Drawing::Size(635, 22);
+			this->res_s->Size = System::Drawing::Size(580, 22);
 			this->res_s->TabIndex = 1;
 			// 
 			// from_s
 			// 
 			this->from_s->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
-			this->from_s->Location = System::Drawing::Point(651, 18);
+			this->from_s->Location = System::Drawing::Point(596, 18);
 			this->from_s->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 36, 0, 0, 0 });
 			this->from_s->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
 			this->from_s->Name = L"from_s";
-			this->from_s->Size = System::Drawing::Size(189, 22);
+			this->from_s->Size = System::Drawing::Size(172, 22);
 			this->from_s->TabIndex = 2;
 			this->from_s->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
 			// 
 			// to_s
 			// 
 			this->to_s->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
-			this->to_s->Location = System::Drawing::Point(651, 76);
+			this->to_s->Location = System::Drawing::Point(596, 76);
 			this->to_s->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 36, 0, 0, 0 });
 			this->to_s->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
 			this->to_s->Name = L"to_s";
-			this->to_s->Size = System::Drawing::Size(189, 22);
+			this->to_s->Size = System::Drawing::Size(172, 22);
 			this->to_s->TabIndex = 3;
 			this->to_s->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
 			// 
-			// panel_m
+			// panel_sh
 			// 
-			this->panel_m->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			this->panel_sh->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->panel_m->Controls->Add(this->button_m);
-			this->panel_m->Controls->Add(this->tableLayoutPanel2);
-			this->panel_m->Location = System::Drawing::Point(9, 43);
-			this->panel_m->Name = L"panel_m";
-			this->panel_m->Size = System::Drawing::Size(849, 548);
-			this->panel_m->TabIndex = 2;
-			this->panel_m->Visible = false;
+			this->panel_sh->Controls->Add(this->info_sh);
+			this->panel_sh->Controls->Add(this->button_sh);
+			this->panel_sh->Controls->Add(this->tableLayoutPanel2);
+			this->panel_sh->Location = System::Drawing::Point(9, 43);
+			this->panel_sh->Name = L"panel_sh";
+			this->panel_sh->Size = System::Drawing::Size(777, 177);
+			this->panel_sh->TabIndex = 2;
+			this->panel_sh->Visible = false;
 			// 
-			// button_m
+			// info_sh
 			// 
-			this->button_m->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+			this->info_sh->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->button_m->Location = System::Drawing::Point(7, 5);
-			this->button_m->Name = L"button_m";
-			this->button_m->Size = System::Drawing::Size(836, 39);
-			this->button_m->TabIndex = 1;
-			this->button_m->Text = L"Convert";
-			this->button_m->UseVisualStyleBackColor = true;
-			this->button_m->Click += gcnew System::EventHandler(this, &MainForm::button_m_Click);
+			this->info_sh->Location = System::Drawing::Point(279, 0);
+			this->info_sh->Name = L"info_sh";
+			this->info_sh->ReadOnly = true;
+			this->info_sh->ScrollBars = System::Windows::Forms::RichTextBoxScrollBars::Vertical;
+			this->info_sh->Size = System::Drawing::Size(494, 174);
+			this->info_sh->TabIndex = 3;
+			this->info_sh->Text = L"";
+			// 
+			// button_sh
+			// 
+			this->button_sh->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button_sh->Location = System::Drawing::Point(8, 3);
+			this->button_sh->Name = L"button_sh";
+			this->button_sh->Size = System::Drawing::Size(265, 40);
+			this->button_sh->TabIndex = 1;
+			this->button_sh->Text = L"Convert";
+			this->button_sh->UseVisualStyleBackColor = true;
+			this->button_sh->Click += gcnew System::EventHandler(this, &MainForm::button_sh_Click);
 			// 
 			// tableLayoutPanel2
 			// 
-			this->tableLayoutPanel2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
 			this->tableLayoutPanel2->ColumnCount = 2;
 			this->tableLayoutPanel2->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-				50)));
+				76.95473F)));
 			this->tableLayoutPanel2->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-				50)));
-			this->tableLayoutPanel2->Controls->Add(this->res_m, 1, 0);
-			this->tableLayoutPanel2->Controls->Add(this->data_m, 0, 0);
-			this->tableLayoutPanel2->Location = System::Drawing::Point(4, 47);
+				23.04527F)));
+			this->tableLayoutPanel2->Controls->Add(this->num_sh, 0, 0);
+			this->tableLayoutPanel2->Controls->Add(this->res_sh, 0, 1);
+			this->tableLayoutPanel2->Controls->Add(this->from_sh, 1, 0);
+			this->tableLayoutPanel2->Controls->Add(this->to_sh, 1, 1);
+			this->tableLayoutPanel2->Location = System::Drawing::Point(8, 54);
 			this->tableLayoutPanel2->Name = L"tableLayoutPanel2";
-			this->tableLayoutPanel2->RowCount = 1;
+			this->tableLayoutPanel2->RowCount = 2;
 			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
-			this->tableLayoutPanel2->Size = System::Drawing::Size(842, 498);
+			this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
+			this->tableLayoutPanel2->Size = System::Drawing::Size(265, 116);
 			this->tableLayoutPanel2->TabIndex = 0;
 			// 
-			// res_m
+			// num_sh
 			// 
-			this->res_m->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->res_m->Location = System::Drawing::Point(424, 3);
-			this->res_m->Multiline = true;
-			this->res_m->Name = L"res_m";
-			this->res_m->ReadOnly = true;
-			this->res_m->Size = System::Drawing::Size(415, 492);
-			this->res_m->TabIndex = 1;
+			this->num_sh->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
+			this->num_sh->Location = System::Drawing::Point(3, 18);
+			this->num_sh->Margin = System::Windows::Forms::Padding(3, 3, 10, 3);
+			this->num_sh->Name = L"num_sh";
+			this->num_sh->Size = System::Drawing::Size(190, 22);
+			this->num_sh->TabIndex = 0;
 			// 
-			// data_m
+			// res_sh
 			// 
-			this->data_m->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->data_m->Location = System::Drawing::Point(3, 3);
-			this->data_m->Multiline = true;
-			this->data_m->Name = L"data_m";
-			this->data_m->Size = System::Drawing::Size(415, 492);
-			this->data_m->TabIndex = 0;
+			this->res_sh->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
+			this->res_sh->Location = System::Drawing::Point(3, 76);
+			this->res_sh->Margin = System::Windows::Forms::Padding(3, 3, 10, 3);
+			this->res_sh->Name = L"res_sh";
+			this->res_sh->ReadOnly = true;
+			this->res_sh->Size = System::Drawing::Size(190, 22);
+			this->res_sh->TabIndex = 1;
+			// 
+			// from_sh
+			// 
+			this->from_sh->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
+			this->from_sh->Location = System::Drawing::Point(206, 18);
+			this->from_sh->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 36, 0, 0, 0 });
+			this->from_sh->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
+			this->from_sh->Name = L"from_sh";
+			this->from_sh->Size = System::Drawing::Size(56, 22);
+			this->from_sh->TabIndex = 2;
+			this->from_sh->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
+			// 
+			// to_sh
+			// 
+			this->to_sh->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Left | System::Windows::Forms::AnchorStyles::Right));
+			this->to_sh->Location = System::Drawing::Point(206, 76);
+			this->to_sh->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 36, 0, 0, 0 });
+			this->to_sh->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
+			this->to_sh->Name = L"to_sh";
+			this->to_sh->Size = System::Drawing::Size(56, 22);
+			this->to_sh->TabIndex = 3;
+			this->to_sh->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 2, 0, 0, 0 });
 			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(873, 606);
+			this->ClientSize = System::Drawing::Size(801, 238);
 			this->Controls->Add(this->menuStrip1);
-			this->Controls->Add(this->panel_m);
 			this->Controls->Add(this->panel_s);
+			this->Controls->Add(this->panel_sh);
 			this->MainMenuStrip = this->menuStrip1;
 			this->MinimumSize = System::Drawing::Size(350, 258);
 			this->Name = L"MainForm";
@@ -360,9 +419,11 @@ namespace UIcppProject {
 			this->tableLayoutPanel1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->from_s))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->to_s))->EndInit();
-			this->panel_m->ResumeLayout(false);
+			this->panel_sh->ResumeLayout(false);
 			this->tableLayoutPanel2->ResumeLayout(false);
 			this->tableLayoutPanel2->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->from_sh))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->to_sh))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -391,13 +452,15 @@ namespace UIcppProject {
 		return msclr::interop::marshal_as<std::string>(systemString);
 	}
 
-	private: System::Void modToolStripMenuItem_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) 
+	// Change mod
+	private: void changeMod()
 	{
 		if (modToolStripMenuItem->SelectedIndex == 0 && !stepsToolStripMenuItem->Checked)
 		{
 			// Switxh StripMenuItems access
 			importToolStripMenuItem->Enabled = false;
-			
+			saveToolStripMenuItem->Enabled = false;
+
 			// Set window size
 			this->MaximumSize = System::Drawing::Size(10000, 225);
 			this->MinimumSize = System::Drawing::Size(350, 225);
@@ -405,36 +468,47 @@ namespace UIcppProject {
 
 			// Switch mod panels
 			panel_s->Visible = true;
-			panel_m->Visible = false;
-			//s+h
+			//m
+			panel_sh->Visible = false;
 			//m+h
 		}
 		else if (modToolStripMenuItem->SelectedIndex == 1 && !stepsToolStripMenuItem->Checked)
 		{
-			// Switxh StripMenuItems access
-			importToolStripMenuItem->Enabled = true;
-
-			// Set window size
-			this->MaximumSize = System::Drawing::Size(0, 0);
-			this->MinimumSize = System::Drawing::Size(0, 0);
-			this->Size = System::Drawing::Size(700, 400);
-
-			// Switch mod panels
-			panel_s->Visible = false;
-			panel_m->Visible = true;
-			//s+h
-			//m+h
+			;
 		}
 		else if (modToolStripMenuItem->SelectedIndex == 0 && stepsToolStripMenuItem->Checked)
 		{
-			;
+			// Switxh StripMenuItems access
+			importToolStripMenuItem->Enabled = false;
+			saveToolStripMenuItem->Enabled = true;
+
+			// Set window size
+			this->MaximumSize = System::Drawing::Size(0, 0);
+			this->MinimumSize = System::Drawing::Size(650, 225);
+			this->Size = System::Drawing::Size(650, 225);
+
+			// Switch mod panels
+			panel_s->Visible = false;
+			//m
+			panel_sh->Visible = true;
+			//m+h
 		}
 		else if (modToolStripMenuItem->SelectedIndex == 1 && stepsToolStripMenuItem->Checked)
 		{
 			;
 		}
 	}
-
+	private: System::Void modToolStripMenuItem_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) 
+	{
+		changeMod();
+	}
+	private: System::Void stepsToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+	{
+		stepsToolStripMenuItem->Checked = !stepsToolStripMenuItem->Checked;
+		changeMod();
+	}
+	
+	// Converting buttons
 	private: System::Void button_s_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
 		Converter converter;
@@ -452,9 +526,23 @@ namespace UIcppProject {
 
 		res_s->Text = gcnew System::String(converter.getRes().c_str());
 	}
-	private: System::Void button_m_Click(System::Object^ sender, System::EventArgs^ e) 
+	private: System::Void button_sh_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
-		;
+		Converter converter;
+		try
+		{
+			converter = Converter(ToShort(from_sh->Value), ToShort(to_sh->Value), ToStdString(num_sh->Text));
+			converter.convert();
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show("Не вдалося сконвертувати число \"" + num_s->Text + "\" із [" + from_s->Text + "] у [" + to_s->Text + "]:\n\n" + ex->Message, "Помилка", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			res_sh->Text = L"";
+			return;
+		}
+
+		res_sh->Text = gcnew System::String(converter.getRes().c_str());
+		info_sh->Text = gcnew System::String(converter.getInfo().c_str());
 	}
 };
 }
