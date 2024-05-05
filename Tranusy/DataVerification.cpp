@@ -25,12 +25,14 @@ void DataVerification::setRange(short begin, short end)
 {
 	if (begin < 2)
 	{
-		invalid_argument exp("'Begin value' must be greater or equal to 2");
+		System::String^ errorMessage = "'Begin value' must be greater or equal to 2";
+		System::Exception^ exp = gcnew System::Exception(errorMessage);
 		throw exp;
 	}
 	else if (end <= begin)
 	{
-		invalid_argument exp("'End value' must be greater then 'begin value'");
+		System::String^ errorMessage = "'End value' must be greater then 'begin value'";
+		System::Exception^ exp = gcnew System::Exception(errorMessage);
 		throw exp;
 	}
 
