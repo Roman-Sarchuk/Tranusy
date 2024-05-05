@@ -1,5 +1,6 @@
 #include "Converter.h"
 
+
 namespace UIcppProject
 {
     Converter::Converter(short accuracy) { setAccuracy(accuracy); }
@@ -15,28 +16,47 @@ namespace UIcppProject
     {
         info.clear();
 
-        if (toSys == 10)
+        try
         {
-            toDecimal();
+            if (toSys == 10)
+            {
+                toDecimal();
+            }
+            else if (fromSys == 10) {
+                fromDecimal();
+            }
+            else if (fromSys == toSys)
+            {
+                res = num;
+                info = num + "[" + to_string(fromSys) + "]";
+                info += " = " + info + '\n';
+            }
+            else
+            {
+                toDecimal();
+                info.append("\n\n");
+                num = res;
+                fromDecimal();
+            }
         }
-        else if (fromSys == 10) {
-            fromDecimal();
-        }
-        else if (fromSys == toSys)
+        catch (const std::exception& ex)
         {
-            res = num;
-            info = num + "[" + to_string(fromSys) + "]";
-            info += " = " + info + '\n';
-        }
-        else
-        {
-            toDecimal();
-            info.append("\n\n");
-            num = res;
-            fromDecimal();
+            string message = ex.what();
+            System::String^ errorMessage = gcnew System::String(message.c_str());
+            System::Exception^ exp = gcnew System::Exception(errorMessage);
+            throw exp;
         }
 
         return res;
+    }
+
+    string Converter::convert(short from, short to, string value)
+    {
+        setFromSys(from);
+        setToSys(to);
+        setNum(value);
+
+        return convert();
     }
 
     void Converter::toDecimal()
@@ -262,20 +282,13 @@ namespace UIcppProject
         return 'A' + digit - 10;
     }
 
-    string Converter::convert(short from, short to, string value)
-    {
-        setFromSys(from);
-        setToSys(to);
-        setNum(value);
-
-        return convert();
-    }
-
     void Converter::setFromSys(short base)
     {
         if (!verifyBase(base))
         {
-            invalid_argument exp("Value must be in range(" + to_string(getRange().first) + ", " + to_string(getRange().second) + ")");
+            string message = "Value must be in range(" + to_string(getRange().first) + ", " + to_string(getRange().second) + ")";
+            System::String^ errorMessage = gcnew System::String(message.c_str());
+            System::Exception^ exp = gcnew System::Exception(errorMessage);
             throw exp;
         }
 
@@ -286,7 +299,9 @@ namespace UIcppProject
     {
         if (!verifyBase(base))
         {
-            invalid_argument exp("Value must be in range(" + to_string(getRange().first) + " to " + to_string(getRange().second) + ")");
+            string message = "Value must be in range(" + to_string(getRange().first) + " to " + to_string(getRange().second) + ")";
+            System::String^ errorMessage = gcnew System::String(message.c_str());
+            System::Exception^ exp = gcnew System::Exception(errorMessage);
             throw exp;
         }
 
@@ -297,7 +312,9 @@ namespace UIcppProject
     {
         if (!verifyNumber(value, fromSys))
         {
-            invalid_argument exp("Value must only contain that symbols: " + getAlphabet());
+            string message = "Value must only contain that symbols: " + getAlphabet();
+            System::String^ errorMessage = gcnew System::String(message.c_str());
+            System::Exception^ exp = gcnew System::Exception(errorMessage);
             throw exp;
         }
 
@@ -308,7 +325,8 @@ namespace UIcppProject
     {
         if (accuracy < 1)
         {
-            invalid_argument exp("'Accuracy' must be greater than 1");
+            System::String^ errorMessage = "'Accuracy' must be greater than 1";
+            System::Exception^ exp = gcnew System::Exception(errorMessage);
             throw exp;
         }
 

@@ -1,4 +1,5 @@
 #pragma once
+#include <msclr/marshal_cppstd.h>
 #include "Converter.h"
 
 namespace UIcppProject {
@@ -363,6 +364,29 @@ namespace UIcppProject {
 
 		}
 #pragma endregion
+	protected: short ToShort(System::Decimal decimalValue)
+	{
+		// Convert the Decimal value to Int32 with rounding to the nearest integer
+		int intValue = Decimal::ToInt32(decimalValue);
+
+		// Check if the value fits within the range of a short
+		if (intValue < SHRT_MIN || intValue > SHRT_MAX)
+		{
+			// Handle the case where the value is out of range for a short
+			throw std::out_of_range("Decimal value is out of range for short type.");
+		}
+
+		// Convert the Int32 value to short
+		short shortValue = static_cast<short>(intValue);
+
+		return shortValue;
+	}
+	protected: std::string ToStdString(System::String^ systemString)
+	{
+		// Convert System::String^ to std::string
+		return msclr::interop::marshal_as<std::string>(systemString);
+	}
+
 	private: System::Void modToolStripMenuItem_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) 
 	{
 		if (modToolStripMenuItem->SelectedIndex == 0 && !stepsToolStripMenuItem->Checked)
@@ -406,9 +430,23 @@ namespace UIcppProject {
 			;
 		}
 	}
+
 	private: System::Void button_s_Click(System::Object^ sender, System::EventArgs^ e) 
 	{
-		Converter converter = Converter(from_s->Value, to_s->Value, msclr::interop::marshal_as<std::string>(num_s->Text));
+		Converter converter;
+		try
+		{
+			converter = Converter(ToShort(from_s->Value), ToShort(to_s->Value), ToStdString(num_s->Text));
+			converter.convert();
+		}
+		catch (Exception^ ex)
+		{
+			MessageBox::Show("Не вдалося сконвертувати число \""+ num_s->Text +"\" із ["+ from_s->Text + "] у ["+ to_s->Text + "]:\n\n" + ex->Message, "Помилка", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			res_s->Text = L"";
+			return;
+		}
+
+		res_s->Text = gcnew System::String(converter.getRes().c_str());
 	}
 };
 }

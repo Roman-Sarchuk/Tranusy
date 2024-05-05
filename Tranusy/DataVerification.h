@@ -10,7 +10,7 @@ using std::invalid_argument;
 
 class DataVerification
 {
-	pair<short, short> range = pair<short, short>(2, 16);
+	pair<short, short> range = pair<short, short>(2, 36);
 	string alphabet{};
 
 public:
