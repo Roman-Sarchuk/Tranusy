@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
-    <ProjectGuid>{ae60591f-2945-44c6-9dd4-6dc3981e7d8e}</ProjectGuid>
+    <ProjectGuid>{b021397f-499a-4a3c-97da-217b9d966ce8}</ProjectGuid>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>Tranusy</RootNamespace>

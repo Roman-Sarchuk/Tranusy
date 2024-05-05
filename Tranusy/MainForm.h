@@ -34,7 +34,32 @@ namespace UIcppProject {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::MenuStrip^ menuStrip1;
+	protected:
+	private: System::Windows::Forms::ToolStripMenuItem^ fileToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ saveToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ importToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ modeToolStripMenuItem;
+
+	private: System::Windows::Forms::ToolStripMenuItem^ infoToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripComboBox^ simplToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ showStepsToolStripMenuItem;
+
+	protected:
+
+
+
+
+
+	protected:
+
+	protected:
+
+
+
+
+
+
 	protected:
 
 	private:
@@ -50,30 +75,98 @@ namespace UIcppProject {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
+			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->saveToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->importToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->modeToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->infoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->showStepsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->simplToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripComboBox());
+			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// label1
+			// menuStrip1
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(23, 35);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(81, 16);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Hello World!";
+			this->menuStrip1->BackColor = System::Drawing::SystemColors::Control;
+			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+				this->fileToolStripMenuItem,
+					this->modeToolStripMenuItem, this->infoToolStripMenuItem
+			});
+			this->menuStrip1->Location = System::Drawing::Point(0, 0);
+			this->menuStrip1->Name = L"menuStrip1";
+			this->menuStrip1->Size = System::Drawing::Size(582, 28);
+			this->menuStrip1->TabIndex = 0;
+			this->menuStrip1->Text = L"menuStrip1";
+			// 
+			// fileToolStripMenuItem
+			// 
+			this->fileToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->saveToolStripMenuItem,
+					this->importToolStripMenuItem
+			});
+			this->fileToolStripMenuItem->Name = L"fileToolStripMenuItem";
+			this->fileToolStripMenuItem->Size = System::Drawing::Size(46, 24);
+			this->fileToolStripMenuItem->Text = L"File";
+			// 
+			// saveToolStripMenuItem
+			// 
+			this->saveToolStripMenuItem->Name = L"saveToolStripMenuItem";
+			this->saveToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->saveToolStripMenuItem->Text = L"Save";
+			// 
+			// importToolStripMenuItem
+			// 
+			this->importToolStripMenuItem->Enabled = false;
+			this->importToolStripMenuItem->Name = L"importToolStripMenuItem";
+			this->importToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->importToolStripMenuItem->Text = L"Import";
+			// 
+			// modeToolStripMenuItem
+			// 
+			this->modeToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->simplToolStripMenuItem,
+					this->showStepsToolStripMenuItem
+			});
+			this->modeToolStripMenuItem->Name = L"modeToolStripMenuItem";
+			this->modeToolStripMenuItem->Size = System::Drawing::Size(62, 24);
+			this->modeToolStripMenuItem->Text = L"Mode";
+			// 
+			// infoToolStripMenuItem
+			// 
+			this->infoToolStripMenuItem->Name = L"infoToolStripMenuItem";
+			this->infoToolStripMenuItem->Size = System::Drawing::Size(49, 24);
+			this->infoToolStripMenuItem->Text = L"Info";
+			// 
+			// showStepsToolStripMenuItem
+			// 
+			this->showStepsToolStripMenuItem->Name = L"showStepsToolStripMenuItem";
+			this->showStepsToolStripMenuItem->Size = System::Drawing::Size(298, 26);
+			this->showStepsToolStripMenuItem->Text = L"Show steps";
+			// 
+			// simplToolStripMenuItem
+			// 
+			this->simplToolStripMenuItem->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Simple", L"Multiple" });
+			this->simplToolStripMenuItem->Name = L"simplToolStripMenuItem";
+			this->simplToolStripMenuItem->Size = System::Drawing::Size(224, 28);
+			this->simplToolStripMenuItem->Text = L"Simple";
 			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(282, 253);
-			this->Controls->Add(this->label1);
+			this->ClientSize = System::Drawing::Size(582, 353);
+			this->Controls->Add(this->menuStrip1);
+			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MainForm";
 			this->Text = L"MainForm";
+			this->menuStrip1->ResumeLayout(false);
+			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+};
 }
