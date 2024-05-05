@@ -24,6 +24,9 @@
     <ClCompile Include="DataVerification.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Info.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainForm.h">
@@ -38,6 +41,9 @@
     <ClInclude Include="DataVerification.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Info.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="convert_icon.png">
@@ -48,5 +54,8 @@
     <ResourceCompile Include="Tranusy.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info-Text.rtf" />
   </ItemGroup>
 </Project>

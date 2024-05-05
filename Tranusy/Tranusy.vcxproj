@@ -122,17 +122,24 @@
   <ItemGroup>
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="DataVerification.cpp" />
+    <ClCompile Include="Info.cpp" />
     <ClCompile Include="MainForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h" />
     <ClInclude Include="DataVerification.h" />
+    <ClInclude Include="Info.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Info.resx">
+      <DependentUpon>Info.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +149,9 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Tranusy.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Info-Text.rtf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

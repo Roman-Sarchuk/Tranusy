@@ -1,6 +1,7 @@
 #pragma once
 #include <msclr/marshal_cppstd.h>
 #include "Converter.h"
+#include "Info.h"
 
 namespace UIcppProject {
 
@@ -212,6 +213,7 @@ namespace UIcppProject {
 			this->infoToolStripMenuItem->Name = L"infoToolStripMenuItem";
 			this->infoToolStripMenuItem->Size = System::Drawing::Size(49, 26);
 			this->infoToolStripMenuItem->Text = L"Info";
+			this->infoToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::infoToolStripMenuItem_Click);
 			// 
 			// panel_s
 			// 
@@ -320,6 +322,7 @@ namespace UIcppProject {
 			this->info_sh->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
+			this->info_sh->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->info_sh->Location = System::Drawing::Point(279, 0);
 			this->info_sh->Name = L"info_sh";
 			this->info_sh->ReadOnly = true;
@@ -406,8 +409,8 @@ namespace UIcppProject {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(801, 238);
 			this->Controls->Add(this->menuStrip1);
-			this->Controls->Add(this->panel_s);
 			this->Controls->Add(this->panel_sh);
+			this->Controls->Add(this->panel_s);
 			this->MainMenuStrip = this->menuStrip1;
 			this->MinimumSize = System::Drawing::Size(350, 258);
 			this->Name = L"MainForm";
@@ -451,7 +454,7 @@ namespace UIcppProject {
 		// Convert System::String^ to std::string
 		return msclr::interop::marshal_as<std::string>(systemString);
 	}
-
+	
 	// Change mod
 	private: void changeMod()
 	{
@@ -543,6 +546,13 @@ namespace UIcppProject {
 
 		res_sh->Text = gcnew System::String(converter.getRes().c_str());
 		info_sh->Text = gcnew System::String(converter.getInfo().c_str());
+	}
+	
+	// Info
+	private: System::Void infoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		Tranusy::Info^ info = gcnew Tranusy::Info();
+		info->ShowDialog();
 	}
 };
 }
