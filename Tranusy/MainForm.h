@@ -70,10 +70,13 @@ namespace UIcppProject {
 	private: System::Windows::Forms::Button^ button_s;
 
 	private: System::Windows::Forms::Panel^ panel_m;
-	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ button_m;
+
 	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel2;
-	private: System::Windows::Forms::TextBox^ textBox4;
-	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TextBox^ res_m;
+
+	private: System::Windows::Forms::TextBox^ data_m;
+
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -103,10 +106,10 @@ namespace UIcppProject {
 			this->from_s = (gcnew System::Windows::Forms::NumericUpDown());
 			this->to_s = (gcnew System::Windows::Forms::NumericUpDown());
 			this->panel_m = (gcnew System::Windows::Forms::Panel());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button_m = (gcnew System::Windows::Forms::Button());
 			this->tableLayoutPanel2 = (gcnew System::Windows::Forms::TableLayoutPanel());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->res_m = (gcnew System::Windows::Forms::TextBox());
+			this->data_m = (gcnew System::Windows::Forms::TextBox());
 			this->menuStrip1->SuspendLayout();
 			this->panel_s->SuspendLayout();
 			this->tableLayoutPanel1->SuspendLayout();
@@ -126,7 +129,7 @@ namespace UIcppProject {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(873, 28);
+			this->menuStrip1->Size = System::Drawing::Size(873, 30);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -137,7 +140,7 @@ namespace UIcppProject {
 					this->importToolStripMenuItem
 			});
 			this->fileToolStripMenuItem->Name = L"fileToolStripMenuItem";
-			this->fileToolStripMenuItem->Size = System::Drawing::Size(46, 24);
+			this->fileToolStripMenuItem->Size = System::Drawing::Size(46, 26);
 			this->fileToolStripMenuItem->Text = L"File";
 			// 
 			// saveToolStripMenuItem
@@ -160,7 +163,7 @@ namespace UIcppProject {
 					this->stepsToolStripMenuItem
 			});
 			this->modeToolStripMenuItem->Name = L"modeToolStripMenuItem";
-			this->modeToolStripMenuItem->Size = System::Drawing::Size(62, 24);
+			this->modeToolStripMenuItem->Size = System::Drawing::Size(62, 26);
 			this->modeToolStripMenuItem->Text = L"Mode";
 			// 
 			// modToolStripMenuItem
@@ -180,7 +183,7 @@ namespace UIcppProject {
 			// infoToolStripMenuItem
 			// 
 			this->infoToolStripMenuItem->Name = L"infoToolStripMenuItem";
-			this->infoToolStripMenuItem->Size = System::Drawing::Size(49, 24);
+			this->infoToolStripMenuItem->Size = System::Drawing::Size(49, 26);
 			this->infoToolStripMenuItem->Text = L"Info";
 			// 
 			// panel_s
@@ -276,7 +279,7 @@ namespace UIcppProject {
 			this->panel_m->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->panel_m->Controls->Add(this->button2);
+			this->panel_m->Controls->Add(this->button_m);
 			this->panel_m->Controls->Add(this->tableLayoutPanel2);
 			this->panel_m->Location = System::Drawing::Point(9, 43);
 			this->panel_m->Name = L"panel_m";
@@ -284,16 +287,17 @@ namespace UIcppProject {
 			this->panel_m->TabIndex = 2;
 			this->panel_m->Visible = false;
 			// 
-			// button2
+			// button_m
 			// 
-			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+			this->button_m->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->button2->Location = System::Drawing::Point(7, 5);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(836, 39);
-			this->button2->TabIndex = 1;
-			this->button2->Text = L"Convert";
-			this->button2->UseVisualStyleBackColor = true;
+			this->button_m->Location = System::Drawing::Point(7, 5);
+			this->button_m->Name = L"button_m";
+			this->button_m->Size = System::Drawing::Size(836, 39);
+			this->button_m->TabIndex = 1;
+			this->button_m->Text = L"Convert";
+			this->button_m->UseVisualStyleBackColor = true;
+			this->button_m->Click += gcnew System::EventHandler(this, &MainForm::button_m_Click);
 			// 
 			// tableLayoutPanel2
 			// 
@@ -305,8 +309,8 @@ namespace UIcppProject {
 				50)));
 			this->tableLayoutPanel2->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
 				50)));
-			this->tableLayoutPanel2->Controls->Add(this->textBox4, 1, 0);
-			this->tableLayoutPanel2->Controls->Add(this->textBox3, 0, 0);
+			this->tableLayoutPanel2->Controls->Add(this->res_m, 1, 0);
+			this->tableLayoutPanel2->Controls->Add(this->data_m, 0, 0);
 			this->tableLayoutPanel2->Location = System::Drawing::Point(4, 47);
 			this->tableLayoutPanel2->Name = L"tableLayoutPanel2";
 			this->tableLayoutPanel2->RowCount = 1;
@@ -314,37 +318,37 @@ namespace UIcppProject {
 			this->tableLayoutPanel2->Size = System::Drawing::Size(842, 498);
 			this->tableLayoutPanel2->TabIndex = 0;
 			// 
-			// textBox4
+			// res_m
 			// 
-			this->textBox4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			this->res_m->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox4->Location = System::Drawing::Point(424, 3);
-			this->textBox4->Multiline = true;
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->ReadOnly = true;
-			this->textBox4->Size = System::Drawing::Size(415, 492);
-			this->textBox4->TabIndex = 1;
+			this->res_m->Location = System::Drawing::Point(424, 3);
+			this->res_m->Multiline = true;
+			this->res_m->Name = L"res_m";
+			this->res_m->ReadOnly = true;
+			this->res_m->Size = System::Drawing::Size(415, 492);
+			this->res_m->TabIndex = 1;
 			// 
-			// textBox3
+			// data_m
 			// 
-			this->textBox3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			this->data_m->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox3->Location = System::Drawing::Point(3, 3);
-			this->textBox3->Multiline = true;
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(415, 492);
-			this->textBox3->TabIndex = 0;
+			this->data_m->Location = System::Drawing::Point(3, 3);
+			this->data_m->Multiline = true;
+			this->data_m->Name = L"data_m";
+			this->data_m->Size = System::Drawing::Size(415, 492);
+			this->data_m->TabIndex = 0;
 			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(873, 606);
-			this->Controls->Add(this->panel_s);
 			this->Controls->Add(this->menuStrip1);
 			this->Controls->Add(this->panel_m);
+			this->Controls->Add(this->panel_s);
 			this->MainMenuStrip = this->menuStrip1;
 			this->MinimumSize = System::Drawing::Size(350, 258);
 			this->Name = L"MainForm";
@@ -447,6 +451,10 @@ namespace UIcppProject {
 		}
 
 		res_s->Text = gcnew System::String(converter.getRes().c_str());
+	}
+	private: System::Void button_m_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		;
 	}
 };
 }
