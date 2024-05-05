@@ -12,6 +12,7 @@
 > - [ ] Save the spets convertion in fiel
 > - [ ] Import a file with the numbers
 > - [x] Info window
+> - [ ] Seting StripMenuItem
 
 
 > [!IMPORTANT]
