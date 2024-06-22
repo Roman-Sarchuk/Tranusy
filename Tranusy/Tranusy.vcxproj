@@ -124,6 +124,10 @@
     <ClCompile Include="DataVerification.cpp" />
     <ClCompile Include="Info.cpp" />
     <ClCompile Include="MainForm.cpp" />
+    <ClCompile Include="Muiltiple.cpp" />
+    <ClCompile Include="MuiltipleHistory.cpp" />
+    <ClCompile Include="Simple.cpp" />
+    <ClCompile Include="SimpleHistory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h" />
@@ -134,7 +138,19 @@
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Muiltiple.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="MuiltipleHistory.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Simple.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="SimpleHistory.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Info.resx">
