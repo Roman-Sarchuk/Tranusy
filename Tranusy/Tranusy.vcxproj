@@ -159,6 +159,12 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Simple.resx">
+      <DependentUpon>Simple.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SimpleHistory.resx">
+      <DependentUpon>SimpleHistory.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Image Include="convert_icon.png" />
