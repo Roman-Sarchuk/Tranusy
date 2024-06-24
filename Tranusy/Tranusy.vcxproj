@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
-    <ProjectGuid>{b021397f-499a-4a3c-97da-217b9d966ce8}</ProjectGuid>
+    <ProjectGuid>{920C0561-8C3D-4C47-B51B-587FDE4DEF47}</ProjectGuid>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>Tranusy</RootNamespace>
@@ -110,6 +110,8 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
+      <SubSystem>Windows</SubSystem>
+      <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -122,29 +124,24 @@
   <ItemGroup>
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="DataVerification.cpp" />
-    <ClCompile Include="Info.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="Muiltiple.cpp" />
-    <ClCompile Include="MuiltipleHistory.cpp" />
+    <ClCompile Include="MuiltiplehHistory.cpp" />
     <ClCompile Include="Simple.cpp" />
     <ClCompile Include="SimpleHistory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Converter.h" />
     <ClInclude Include="DataVerification.h" />
-    <ClInclude Include="Info.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Muiltiple.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MuiltipleHistory.h">
+    <ClInclude Include="MuiltiplehHistory.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Simple.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -153,11 +150,11 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Info.resx">
-      <DependentUpon>Info.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Muiltiple.resx">
+      <DependentUpon>Muiltiple.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Simple.resx">
       <DependentUpon>Simple.h</DependentUpon>
@@ -165,15 +162,6 @@
     <EmbeddedResource Include="SimpleHistory.resx">
       <DependentUpon>SimpleHistory.h</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="convert_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Tranusy.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Info-Text.rtf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

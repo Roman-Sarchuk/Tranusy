@@ -10,12 +10,12 @@ namespace Tranusy {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for MuiltipleHistory
+	/// Summary for MuiltiplehHistory
 	/// </summary>
-	public ref class MuiltipleHistory : public System::Windows::Forms::Form
+	public ref class MuiltiplehHistory : public System::Windows::Forms::Form
 	{
 	public:
-		MuiltipleHistory(void)
+		MuiltiplehHistory(void)
 		{
 			InitializeComponent();
 			//
@@ -27,7 +27,7 @@ namespace Tranusy {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~MuiltipleHistory()
+		~MuiltiplehHistory()
 		{
 			if (components)
 			{
@@ -50,7 +50,7 @@ namespace Tranusy {
 		{
 			this->components = gcnew System::ComponentModel::Container();
 			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"MuiltipleHistory";
+			this->Text = L"MuiltiplehHistory";
 			this->Padding = System::Windows::Forms::Padding(0);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 		}

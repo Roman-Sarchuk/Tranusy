@@ -35,6 +35,13 @@ namespace Tranusy {
 			}
 		}
 
+
+
+
+
+	protected:
+
+
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -48,11 +55,17 @@ namespace Tranusy {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"Muiltiple";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->SuspendLayout();
+			// 
+			// Muiltiple
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(278, 233);
+			this->Name = L"Muiltiple";
+			this->Text = L"Muiltiple";
+			this->ResumeLayout(false);
+
 		}
 #pragma endregion
 	};
