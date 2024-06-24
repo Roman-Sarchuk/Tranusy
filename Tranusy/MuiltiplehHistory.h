@@ -34,6 +34,13 @@ namespace Tranusy {
 				delete components;
 			}
 		}
+	private: System::Windows::Forms::Panel^ panel1;
+	protected:
+	private: System::Windows::Forms::TextBox^ textBox3;
+	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel1;
+	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::Button^ button_s;
 
 	private:
 		/// <summary>
@@ -48,11 +55,105 @@ namespace Tranusy {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = gcnew System::ComponentModel::Container();
-			this->Size = System::Drawing::Size(300,300);
-			this->Text = L"MuiltiplehHistory";
-			this->Padding = System::Windows::Forms::Padding(0);
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->button_s = (gcnew System::Windows::Forms::Button());
+			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->panel1->SuspendLayout();
+			this->tableLayoutPanel1->SuspendLayout();
+			this->SuspendLayout();
+			// 
+			// panel1
+			// 
+			this->panel1->Controls->Add(this->textBox3);
+			this->panel1->Controls->Add(this->tableLayoutPanel1);
+			this->panel1->Controls->Add(this->button_s);
+			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->panel1->Location = System::Drawing::Point(0, 0);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(744, 292);
+			this->panel1->TabIndex = 1;
+			// 
+			// tableLayoutPanel1
+			// 
+			this->tableLayoutPanel1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left));
+			this->tableLayoutPanel1->ColumnCount = 2;
+			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
+				50)));
+			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
+				50)));
+			this->tableLayoutPanel1->Controls->Add(this->textBox2, 1, 0);
+			this->tableLayoutPanel1->Controls->Add(this->textBox1, 0, 0);
+			this->tableLayoutPanel1->Location = System::Drawing::Point(3, 49);
+			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
+			this->tableLayoutPanel1->RowCount = 1;
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 50)));
+			this->tableLayoutPanel1->Size = System::Drawing::Size(344, 241);
+			this->tableLayoutPanel1->TabIndex = 3;
+			// 
+			// textBox2
+			// 
+			this->textBox2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox2->Enabled = false;
+			this->textBox2->Location = System::Drawing::Point(175, 3);
+			this->textBox2->Multiline = true;
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(166, 235);
+			this->textBox2->TabIndex = 1;
+			// 
+			// textBox1
+			// 
+			this->textBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox1->Location = System::Drawing::Point(3, 3);
+			this->textBox1->Multiline = true;
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(166, 235);
+			this->textBox1->TabIndex = 0;
+			// 
+			// button_s
+			// 
+			this->button_s->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button_s->Location = System::Drawing::Point(3, 3);
+			this->button_s->Name = L"button_s";
+			this->button_s->Size = System::Drawing::Size(344, 40);
+			this->button_s->TabIndex = 2;
+			this->button_s->Text = L"Convert";
+			this->button_s->UseVisualStyleBackColor = true;
+			// 
+			// textBox3
+			// 
+			this->textBox3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->textBox3->Location = System::Drawing::Point(353, 5);
+			this->textBox3->Multiline = true;
+			this->textBox3->Name = L"textBox3";
+			this->textBox3->Size = System::Drawing::Size(386, 283);
+			this->textBox3->TabIndex = 4;
+			// 
+			// MuiltiplehHistory
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(744, 292);
+			this->Controls->Add(this->panel1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Name = L"MuiltiplehHistory";
+			this->Text = L"MuiltiplehHistory";
+			this->panel1->ResumeLayout(false);
+			this->panel1->PerformLayout();
+			this->tableLayoutPanel1->ResumeLayout(false);
+			this->tableLayoutPanel1->PerformLayout();
+			this->ResumeLayout(false);
+
 		}
 #pragma endregion
 	};

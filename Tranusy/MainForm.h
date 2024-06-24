@@ -205,6 +205,7 @@ namespace Tranusy {
 			this->MinimumSize = System::Drawing::Size(350, 350);
 			this->Size = System::Drawing::Size(350, 350);
 
+			// Put the mod form
 			Tranusy::Muiltiple^ frm = gcnew Tranusy::Muiltiple();
 			frm->TopLevel = false;
 			frm->Dock = System::Windows::Forms::DockStyle::Fill;
@@ -237,8 +238,19 @@ namespace Tranusy {
 		}
 		else if (toolStripComboBox1->SelectedIndex == 1 && showStepToolStripMenuItem->Checked)	// mh
 		{
+			// Switch StripMenuItems access
+			saveToolStripMenuItem->Enabled = true;
+			importToolStripMenuItem->Enabled = true;
+
+			// Set windows size
+			this->MaximumSize = System::Drawing::Size(100000, 100000);
+			this->MinimumSize = System::Drawing::Size(580, 230);
+			this->Size = System::Drawing::Size(600, 300);
+
+			// Put the mod form
 			Tranusy::MuiltiplehHistory^ frm = gcnew Tranusy::MuiltiplehHistory();
 			frm->TopLevel = false;
+			frm->Dock = System::Windows::Forms::DockStyle::Fill;
 			if (mainPanel->Controls->Count > 0)
 				mainPanel->Controls->Clear();
 			mainPanel->Controls->Add(frm);

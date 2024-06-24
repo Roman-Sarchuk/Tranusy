@@ -156,6 +156,9 @@
     <EmbeddedResource Include="Muiltiple.resx">
       <DependentUpon>Muiltiple.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MuiltiplehHistory.resx">
+      <DependentUpon>MuiltiplehHistory.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Simple.resx">
       <DependentUpon>Simple.h</DependentUpon>
     </EmbeddedResource>
