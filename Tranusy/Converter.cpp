@@ -29,12 +29,12 @@ namespace UIcppProject
             {
                 res = num;
                 info = num + "[" + to_string(fromSys) + "]";
-                info += " = " + info + '\n';
+                info += " = " + info + "\r\n";
             }
             else
             {
                 toDecimal();
-                info.append("\n\n");
+                info.append("\r\n\r\n");
                 num = res;
                 fromDecimal();
             }
@@ -144,7 +144,7 @@ namespace UIcppProject
         // form the info
         info.append(num + "[" + to_string(fromSys) + "] = ");
         info.append(piece1 + " = " + piece2);
-        info.append(" = " + res + "[10]\n");
+        info.append(" = " + res + "[10]\r\n");
 
         info.append((isNegative ? "-" : "") + num + "[" + to_string(fromSys) + "] = ");
         if (isNegative) res = "-" + res;
@@ -203,7 +203,7 @@ namespace UIcppProject
 
             wholeAct.append(to_string(wholePart) + " / " + to_string(toSys) + " = ");
             wholePart /= toSys;
-            wholeAct.append(to_string(wholePart) + " (" + to_string(rem) + ")\n");
+            wholeAct.append(to_string(wholePart) + " (" + to_string(rem) + ")\r\n");
         }
 
         // calc fractional res
@@ -224,7 +224,7 @@ namespace UIcppProject
                 whole.push(digit);
                 fractionalAct.append(" (");
                 fractionalAct.push_back(digit);
-                fractionalAct.append(")\n");
+                fractionalAct.append(")\r\n");
 
                 part = to_string(fractional);   // get fraction without whole digit
                 part.erase(0, part.find('.') + 1);
@@ -256,9 +256,9 @@ namespace UIcppProject
             partRes.second.append("0." + fractionalRes + (isInfinite ? "..." : "") + "[" + to_string(toSys) + "]");
         }
 
-        info.append(wholeAct + partRes.first + "\n\n");
+        info.append(wholeAct + partRes.first + "\r\n\r\n");
         if (isFloat)
-            info.append(fractionalAct + partRes.second + "\n\n");
+            info.append(fractionalAct + partRes.second + "\r\n\r\n");
         res = isNegative ? "-" : "";
         res += isFloat ? wholeRes + "." + fractionalRes : wholeRes;
         info.append((isNegative ? "-" : "") + num + "[10] = " + res + (isInfinite ? "..." : "") + "[" + to_string(toSys) + "]");
@@ -286,7 +286,7 @@ namespace UIcppProject
     {
         if (!verifyBase(base))
         {
-            string message = "Value must be in range(" + to_string(getRange().first) + ", " + to_string(getRange().second) + ")";
+            string message = "Value " + to_string(base) + " must be in range(" + to_string(getRange().first) + ", " + to_string(getRange().second) + ")";
             System::String^ errorMessage = gcnew System::String(message.c_str());
             System::Exception^ exp = gcnew System::Exception(errorMessage);
             throw exp;
@@ -299,7 +299,7 @@ namespace UIcppProject
     {
         if (!verifyBase(base))
         {
-            string message = "Value must be in range(" + to_string(getRange().first) + " to " + to_string(getRange().second) + ")";
+            string message = "Value " + to_string(base) + " must be in range(" + to_string(getRange().first) + " to " + to_string(getRange().second) + ")";
             System::String^ errorMessage = gcnew System::String(message.c_str());
             System::Exception^ exp = gcnew System::Exception(errorMessage);
             throw exp;

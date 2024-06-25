@@ -1,4 +1,9 @@
 #pragma once
+#include <msclr/marshal_cppstd.h>
+#include "Converter.h"
+#include <vector>
+#include <sstream>
+#include <regex>
 
 namespace Tranusy {
 
@@ -35,11 +40,14 @@ namespace Tranusy {
 			}
 		}
 	private: System::Windows::Forms::Panel^ panel1;
+	private: System::Windows::Forms::TextBox^ info;
 	protected:
-	private: System::Windows::Forms::TextBox^ textBox3;
+
 	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel1;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::TextBox^ result;
+
+	private: System::Windows::Forms::TextBox^ data;
+
 	private: System::Windows::Forms::Button^ button_s;
 
 	private:
@@ -57,17 +65,17 @@ namespace Tranusy {
 		{
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->result = (gcnew System::Windows::Forms::TextBox());
+			this->data = (gcnew System::Windows::Forms::TextBox());
 			this->button_s = (gcnew System::Windows::Forms::Button());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
+			this->info = (gcnew System::Windows::Forms::TextBox());
 			this->panel1->SuspendLayout();
 			this->tableLayoutPanel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// panel1
 			// 
-			this->panel1->Controls->Add(this->textBox3);
+			this->panel1->Controls->Add(this->info);
 			this->panel1->Controls->Add(this->tableLayoutPanel1);
 			this->panel1->Controls->Add(this->button_s);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
@@ -85,8 +93,8 @@ namespace Tranusy {
 				50)));
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
 				50)));
-			this->tableLayoutPanel1->Controls->Add(this->textBox2, 1, 0);
-			this->tableLayoutPanel1->Controls->Add(this->textBox1, 0, 0);
+			this->tableLayoutPanel1->Controls->Add(this->result, 1, 0);
+			this->tableLayoutPanel1->Controls->Add(this->data, 0, 0);
 			this->tableLayoutPanel1->Location = System::Drawing::Point(3, 49);
 			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
 			this->tableLayoutPanel1->RowCount = 1;
@@ -94,28 +102,28 @@ namespace Tranusy {
 			this->tableLayoutPanel1->Size = System::Drawing::Size(344, 241);
 			this->tableLayoutPanel1->TabIndex = 3;
 			// 
-			// textBox2
+			// result
 			// 
-			this->textBox2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			this->result->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox2->Enabled = false;
-			this->textBox2->Location = System::Drawing::Point(175, 3);
-			this->textBox2->Multiline = true;
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(166, 235);
-			this->textBox2->TabIndex = 1;
+			this->result->Enabled = false;
+			this->result->Location = System::Drawing::Point(175, 3);
+			this->result->Multiline = true;
+			this->result->Name = L"result";
+			this->result->Size = System::Drawing::Size(166, 235);
+			this->result->TabIndex = 1;
 			// 
-			// textBox1
+			// data
 			// 
-			this->textBox1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			this->data->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox1->Location = System::Drawing::Point(3, 3);
-			this->textBox1->Multiline = true;
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(166, 235);
-			this->textBox1->TabIndex = 0;
+			this->data->Location = System::Drawing::Point(3, 3);
+			this->data->Multiline = true;
+			this->data->Name = L"data";
+			this->data->Size = System::Drawing::Size(166, 235);
+			this->data->TabIndex = 0;
 			// 
 			// button_s
 			// 
@@ -127,17 +135,18 @@ namespace Tranusy {
 			this->button_s->TabIndex = 2;
 			this->button_s->Text = L"Convert";
 			this->button_s->UseVisualStyleBackColor = true;
+			this->button_s->Click += gcnew System::EventHandler(this, &MuiltiplehHistory::button_s_Click);
 			// 
-			// textBox3
+			// info
 			// 
-			this->textBox3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			this->info->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->textBox3->Location = System::Drawing::Point(353, 5);
-			this->textBox3->Multiline = true;
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(386, 283);
-			this->textBox3->TabIndex = 4;
+			this->info->Location = System::Drawing::Point(353, 5);
+			this->info->Multiline = true;
+			this->info->Name = L"info";
+			this->info->Size = System::Drawing::Size(386, 283);
+			this->info->TabIndex = 4;
 			// 
 			// MuiltiplehHistory
 			// 
@@ -156,5 +165,74 @@ namespace Tranusy {
 
 		}
 #pragma endregion
-	};
+	private: bool verifyLine(const string& line)
+	{
+		std::regex pattern(R"(^[^\ ]+ \[\d+\] \[\d+\]$)");
+		return std::regex_match(line, pattern);
+	}
+	private: System::Void button_s_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		std::vector<std::vector<string>> numData;
+		unsigned int counter{};
+
+		// Convert String^ in std::string
+		string content = msclr::interop::marshal_as<std::string>(this->data->Text);
+
+		// Split in {{"num", "from", "to"}, ...}
+		std::stringstream ss(content);
+		string line;
+		while (getline(ss, line))
+		{
+			counter++;
+			if (!verifyLine(line[line.size() - 1] == '\r' ? line.substr(0, line.size() - 1) : line))
+			{
+				MessageBox::Show(msclr::interop::marshal_as<System::String^>("Не вдалося сконвертувати число!\nрядок #" + to_string(counter) + ": \"" + line + "\"\n\nПеревірте коректність рядка та повторіть спробу. Шаблон для вводу рядка: \"число [з] [у]\"; де 'число' будь-яке (дійсне), 'з' натуральне (2-36), 'у' натуральне (2-36)\n\nПриклад рядка: -A34F3.1B [16] [2]"), "Помилка", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			std::vector<string> tokens;
+			size_t pos = 0;
+
+			// get num (before square brackets)
+			pos = line.find(" ");
+			tokens.push_back(line.substr(0, pos));
+			line.erase(0, pos + 1);
+
+			// get from sys base (number in first brackets)
+			pos = line.find("]");
+			tokens.push_back(line.substr(1, pos - 1)); // skip the opening brackets
+			line.erase(0, pos + 2); // skip the ending brackets and backspace
+
+			// get to sys base (number in second brackets)
+			pos = line.find("]");
+			tokens.push_back(line.substr(1, pos - 1)); // skip the opening brackets
+
+			numData.push_back(tokens);
+		}
+
+		// Get result
+		string numRes{};
+		string numInfo{};
+		UIcppProject::Converter converter;
+		for (std::vector<string> set : numData)
+		{
+			try
+			{
+				converter.convert(static_cast<short>(stoi(set[1])), static_cast<short>(stoi(set[2])), set[0]);
+				numRes += converter.getRes() + " [" + set[2] + "]\r\n";
+				numInfo += converter.getInfo() + "\r\n\r\n\r\n\r\n\r\n";
+			}
+			catch (Exception^ ex)
+			{
+				MessageBox::Show(msclr::interop::marshal_as<System::String^>("Не вдалося сконвертувати число!\nрядок #" + to_string(counter) + ": \"" + set[0] + " [" + set[1] + "] [" + set[2] + "]\n\n") + ex->Message, "Помилка", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				numRes = "";
+				numInfo = "";
+				this->result->Text = L"";
+				return;
+			}
+		}
+		this->result->Text = msclr::interop::marshal_as<System::String^>(numRes);
+		this->info->Text = msclr::interop::marshal_as<System::String^>(numInfo);
+	}
+};
 }
