@@ -15,6 +15,7 @@ namespace UIcppProject
     string Converter::convert()
     {
         info.clear();
+        res.clear();
 
         try
         {
@@ -93,7 +94,7 @@ namespace UIcppProject
         }
 
         // calc whole res
-        long long digit, wproduct;
+        long long digit{}, wproduct{};
         for (int i = 0, dr = (int)wholePart.size() - 1; dr >= 0; i++, dr--)
         {
             if (wholePart[i] >= 'A')
@@ -115,7 +116,7 @@ namespace UIcppProject
         if (isFloat) {
             piece1.append(" + ");
             piece2.append(" + ");
-            double fproduct;
+            double fproduct{};
             for (int i = 0, dr = -1, end = -((int)fractionalPart.size()); dr >= end; i++, dr--)
             {
                 if (fractionalPart[i] >= 'A')
@@ -195,7 +196,7 @@ namespace UIcppProject
 
         // calc whole res
         partRes.first.append(to_string(wholePart) + "[10] = ");
-        int rem;
+        int rem{};
         while (wholePart != 0)
         {
             rem = wholePart % toSys;
@@ -210,7 +211,7 @@ namespace UIcppProject
         if (isFloat) {
             partRes.second.append("0." + to_string(fractionalPart) + "[10] = ");
             string part{};
-            char digit;
+            char digit{};
             double fractional = stod("0." + to_string(fractionalPart));
             for (size_t i = accuracy; fractionalPart != 0 && accuracy > 0; accuracy--)
             {

@@ -214,7 +214,8 @@ namespace Tranusy {
 		{
 			try
 			{
-				converter.convert(static_cast<short>(stoi(set[1])), static_cast<short>(stoi(set[2])), set[0]);
+				converter = UIcppProject::Converter(static_cast<short>(stoi(set[1])), static_cast<short>(stoi(set[2])), set[0]);
+				converter.convert();
 				numRes += converter.getRes() + " [" + set[2] + "]\r\n";
 			}
 			catch (Exception^ ex)
