@@ -111,10 +111,11 @@ namespace Tranusy {
 			this->result->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->result->Enabled = false;
 			this->result->Location = System::Drawing::Point(175, 3);
 			this->result->Multiline = true;
 			this->result->Name = L"result";
+			this->result->ReadOnly = true;
+			this->result->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->result->Size = System::Drawing::Size(166, 292);
 			this->result->TabIndex = 1;
 			// 
@@ -126,6 +127,7 @@ namespace Tranusy {
 			this->data->Location = System::Drawing::Point(3, 3);
 			this->data->Multiline = true;
 			this->data->Name = L"data";
+			this->data->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->data->Size = System::Drawing::Size(166, 292);
 			this->data->TabIndex = 0;
 			// 

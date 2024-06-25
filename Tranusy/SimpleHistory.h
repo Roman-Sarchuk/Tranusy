@@ -117,6 +117,7 @@ namespace Tranusy {
 			this->info_sh->Location = System::Drawing::Point(355, 5);
 			this->info_sh->Multiline = true;
 			this->info_sh->Name = L"info_sh";
+			this->info_sh->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->info_sh->Size = System::Drawing::Size(382, 178);
 			this->info_sh->TabIndex = 2;
 			// 

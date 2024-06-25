@@ -64,11 +64,11 @@ namespace Tranusy {
 		void InitializeComponent(void)
 		{
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->info = (gcnew System::Windows::Forms::TextBox());
 			this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->result = (gcnew System::Windows::Forms::TextBox());
 			this->data = (gcnew System::Windows::Forms::TextBox());
 			this->button_s = (gcnew System::Windows::Forms::Button());
-			this->info = (gcnew System::Windows::Forms::TextBox());
 			this->panel1->SuspendLayout();
 			this->tableLayoutPanel1->SuspendLayout();
 			this->SuspendLayout();
@@ -83,6 +83,18 @@ namespace Tranusy {
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(744, 292);
 			this->panel1->TabIndex = 1;
+			// 
+			// info
+			// 
+			this->info->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->info->Location = System::Drawing::Point(353, 5);
+			this->info->Multiline = true;
+			this->info->Name = L"info";
+			this->info->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
+			this->info->Size = System::Drawing::Size(386, 283);
+			this->info->TabIndex = 4;
 			// 
 			// tableLayoutPanel1
 			// 
@@ -107,10 +119,11 @@ namespace Tranusy {
 			this->result->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->result->Enabled = false;
 			this->result->Location = System::Drawing::Point(175, 3);
 			this->result->Multiline = true;
 			this->result->Name = L"result";
+			this->result->ReadOnly = true;
+			this->result->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->result->Size = System::Drawing::Size(166, 235);
 			this->result->TabIndex = 1;
 			// 
@@ -122,6 +135,7 @@ namespace Tranusy {
 			this->data->Location = System::Drawing::Point(3, 3);
 			this->data->Multiline = true;
 			this->data->Name = L"data";
+			this->data->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
 			this->data->Size = System::Drawing::Size(166, 235);
 			this->data->TabIndex = 0;
 			// 
@@ -136,17 +150,6 @@ namespace Tranusy {
 			this->button_s->Text = L"Convert";
 			this->button_s->UseVisualStyleBackColor = true;
 			this->button_s->Click += gcnew System::EventHandler(this, &MuiltiplehHistory::button_s_Click);
-			// 
-			// info
-			// 
-			this->info->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->info->Location = System::Drawing::Point(353, 5);
-			this->info->Multiline = true;
-			this->info->Name = L"info";
-			this->info->Size = System::Drawing::Size(386, 283);
-			this->info->TabIndex = 4;
 			// 
 			// MuiltiplehHistory
 			// 
