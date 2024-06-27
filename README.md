@@ -1,5 +1,5 @@
-# [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Akronim&size=75&pause=500&color=F7DA2C&vCenter=true&random=false&width=250&height=95&lines=Tranusy)](https://git.io/typing-svg) ![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white) ![Static Badge](https://img.shields.io/badge/C%2B%2B-CLI-passing?style=for-the-badge&color=%238c16c7)
-![Static Badge](https://img.shields.io/badge/version-2.0.0-p?style=flat&color=%2324913C) ![Static Badge](https://img.shields.io/badge/number-system-p?style=flat-square&color=%23A61000%09) ![Static Badge](https://img.shields.io/badge/multiple-conversion-p?style=flat&color=%23ab8f02)
+# [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Akronim&size=75&pause=500&color=F7DA2C&vCenter=true&random=false&width=250&height=95&lines=Tranusy)](https://git.io/typing-svg) ![Static Badge](https://img.shields.io/badge/version-2.0.0-p?style=flat&color=%2324913C) ![Static Badge](https://img.shields.io/badge/number-system-p?style=flat-square&color=%23A61000%09) ![Static Badge](https://img.shields.io/badge/multiple-conversion-p?style=flat&color=%23ab8f02)
+![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white) ![Static Badge](https://img.shields.io/badge/C%2B%2B-CLI-passing?style=for-the-badge&color=%238c16c7)
 
 
 
