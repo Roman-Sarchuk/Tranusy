@@ -24,10 +24,10 @@
     <ClCompile Include="SimpleHistory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Muiltiple.cpp">
+    <ClCompile Include="Multiple.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MuiltiplehHistory.cpp">
+    <ClCompile Include="MultiplehHistory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Converter.cpp">
@@ -50,10 +50,10 @@
     <ClInclude Include="SimpleHistory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Muiltiple.h">
+    <ClInclude Include="Multiple.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MuiltiplehHistory.h">
+    <ClInclude Include="MultiplehHistory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Converter.h">

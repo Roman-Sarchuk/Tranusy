@@ -17,10 +17,10 @@ namespace Tranusy {
 	/// <summary>
 	/// Summary for Muiltiple
 	/// </summary>
-	public ref class Muiltiple : public System::Windows::Forms::Form
+	public ref class Multiple : public System::Windows::Forms::Form
 	{
 	public:
-		Muiltiple(void)
+		Multiple(void)
 		{
 			InitializeComponent();
 			//
@@ -32,7 +32,7 @@ namespace Tranusy {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~Muiltiple()
+		~Multiple()
 		{
 			if (components)
 			{
@@ -143,7 +143,7 @@ namespace Tranusy {
 			this->button_s->TabIndex = 2;
 			this->button_s->Text = L"Convert";
 			this->button_s->UseVisualStyleBackColor = true;
-			this->button_s->Click += gcnew System::EventHandler(this, &Muiltiple::button_s_Click);
+			this->button_s->Click += gcnew System::EventHandler(this, &Multiple::button_s_Click);
 			// 
 			// Muiltiple
 			// 

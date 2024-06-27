@@ -17,10 +17,10 @@ namespace Tranusy {
 	/// <summary>
 	/// Summary for MuiltiplehHistory
 	/// </summary>
-	public ref class MuiltiplehHistory : public System::Windows::Forms::Form
+	public ref class MultiplehHistory : public System::Windows::Forms::Form
 	{
 	public:
-		MuiltiplehHistory(void)
+		MultiplehHistory(void)
 		{
 			InitializeComponent();
 			//
@@ -32,7 +32,7 @@ namespace Tranusy {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~MuiltiplehHistory()
+		~MultiplehHistory()
 		{
 			if (components)
 			{
@@ -149,7 +149,7 @@ namespace Tranusy {
 			this->button_s->TabIndex = 2;
 			this->button_s->Text = L"Convert";
 			this->button_s->UseVisualStyleBackColor = true;
-			this->button_s->Click += gcnew System::EventHandler(this, &MuiltiplehHistory::button_s_Click);
+			this->button_s->Click += gcnew System::EventHandler(this, &MultiplehHistory::button_s_Click);
 			// 
 			// MuiltiplehHistory
 			// 

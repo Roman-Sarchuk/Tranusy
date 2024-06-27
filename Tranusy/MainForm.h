@@ -1,8 +1,8 @@
 #pragma once
 #include "Simple.h"
-#include "Muiltiple.h"
+#include "Multiple.h"
 #include "SimpleHistory.h"
-#include "MuiltiplehHistory.h"
+#include "MultiplehHistory.h"
 #include "Info.h"
 
 namespace Tranusy {
@@ -58,9 +58,9 @@ namespace Tranusy {
 			}
 		}
 	private: Tranusy::Simple^ frm_s;
-	private: Tranusy::Muiltiple^ frm_m;
+	private: Tranusy::Multiple^ frm_m;
 	private: Tranusy::SimpleHistory^ frm_sh;
-	private: Tranusy::MuiltiplehHistory^ frm_mh;
+	private: Tranusy::MultiplehHistory^ frm_mh;
 
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	protected:
@@ -236,7 +236,7 @@ namespace Tranusy {
 			this->Size = System::Drawing::Size(350, 350);
 
 			// Put the mod form
-			frm_m = gcnew Tranusy::Muiltiple();
+			frm_m = gcnew Tranusy::Multiple();
 			frm_m->TopLevel = false;
 			frm_m->Dock = System::Windows::Forms::DockStyle::Fill;
 			if (mainPanel->Controls->Count > 0)
@@ -278,7 +278,7 @@ namespace Tranusy {
 			this->Size = System::Drawing::Size(600, 300);
 
 			// Put the mod form
-			frm_mh = gcnew Tranusy::MuiltiplehHistory();
+			frm_mh = gcnew Tranusy::MultiplehHistory();
 			frm_mh->TopLevel = false;
 			frm_mh->Dock = System::Windows::Forms::DockStyle::Fill;
 			if (mainPanel->Controls->Count > 0)

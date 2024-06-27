@@ -130,8 +130,8 @@
     <ClCompile Include="DataVerification.cpp" />
     <ClCompile Include="Info.cpp" />
     <ClCompile Include="MainForm.cpp" />
-    <ClCompile Include="Muiltiple.cpp" />
-    <ClCompile Include="MuiltiplehHistory.cpp" />
+    <ClCompile Include="Multiple.cpp" />
+    <ClCompile Include="MultiplehHistory.cpp" />
     <ClCompile Include="Simple.cpp" />
     <ClCompile Include="SimpleHistory.cpp" />
   </ItemGroup>
@@ -144,10 +144,10 @@
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Muiltiple.h">
+    <ClInclude Include="Multiple.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MuiltiplehHistory.h">
+    <ClInclude Include="MultiplehHistory.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Simple.h">
@@ -164,11 +164,11 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Muiltiple.resx">
-      <DependentUpon>Muiltiple.h</DependentUpon>
+    <EmbeddedResource Include="Multiple.resx">
+      <DependentUpon>Multiple.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MuiltiplehHistory.resx">
-      <DependentUpon>MuiltiplehHistory.h</DependentUpon>
+    <EmbeddedResource Include="MultiplehHistory.resx">
+      <DependentUpon>MultiplehHistory.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Simple.resx">
       <DependentUpon>Simple.h</DependentUpon>
