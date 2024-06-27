@@ -44,7 +44,7 @@ namespace Tranusy {
 	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel1;
 	private: System::Windows::Forms::TextBox^ result;
 
-	private: System::Windows::Forms::TextBox^ data;
+	public: System::Windows::Forms::TextBox^ data;
 
 	protected:
 

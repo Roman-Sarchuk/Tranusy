@@ -37,7 +37,8 @@ namespace Tranusy {
 			}
 		}
 	private: System::Windows::Forms::Panel^ panel_s;
-	private: System::Windows::Forms::TextBox^ info_sh;
+	public: System::Windows::Forms::TextBox^ info;
+
 	protected:
 
 	private: System::Windows::Forms::Button^ button_s;
@@ -46,31 +47,6 @@ namespace Tranusy {
 	private: System::Windows::Forms::TextBox^ res_sh;
 	private: System::Windows::Forms::NumericUpDown^ from_sh;
 	private: System::Windows::Forms::NumericUpDown^ to_sh;
-
-
-
-
-
-	protected:
-
-
-
-
-
-
-
-
-	protected:
-
-	protected:
-
-
-
-
-
-
-
-
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -85,7 +61,7 @@ namespace Tranusy {
 		void InitializeComponent(void)
 		{
 			this->panel_s = (gcnew System::Windows::Forms::Panel());
-			this->info_sh = (gcnew System::Windows::Forms::TextBox());
+			this->info = (gcnew System::Windows::Forms::TextBox());
 			this->button_s = (gcnew System::Windows::Forms::Button());
 			this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
 			this->num_sh = (gcnew System::Windows::Forms::TextBox());
@@ -100,7 +76,7 @@ namespace Tranusy {
 			// 
 			// panel_s
 			// 
-			this->panel_s->Controls->Add(this->info_sh);
+			this->panel_s->Controls->Add(this->info);
 			this->panel_s->Controls->Add(this->button_s);
 			this->panel_s->Controls->Add(this->tableLayoutPanel1);
 			this->panel_s->Dock = System::Windows::Forms::DockStyle::Fill;
@@ -109,17 +85,17 @@ namespace Tranusy {
 			this->panel_s->Size = System::Drawing::Size(743, 189);
 			this->panel_s->TabIndex = 4;
 			// 
-			// info_sh
+			// info
 			// 
-			this->info_sh->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			this->info->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->info_sh->Location = System::Drawing::Point(355, 5);
-			this->info_sh->Multiline = true;
-			this->info_sh->Name = L"info_sh";
-			this->info_sh->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
-			this->info_sh->Size = System::Drawing::Size(382, 178);
-			this->info_sh->TabIndex = 2;
+			this->info->Location = System::Drawing::Point(355, 5);
+			this->info->Multiline = true;
+			this->info->Name = L"info";
+			this->info->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
+			this->info->Size = System::Drawing::Size(382, 178);
+			this->info->TabIndex = 2;
 			// 
 			// button_s
 			// 
@@ -253,7 +229,7 @@ namespace Tranusy {
 		}
 
 		res_sh->Text = gcnew System::String(converter.getRes().c_str());
-		info_sh->Text = gcnew System::String(converter.getInfo().c_str());
+		info->Text = gcnew System::String(converter.getInfo().c_str());
 	}
 };
 }

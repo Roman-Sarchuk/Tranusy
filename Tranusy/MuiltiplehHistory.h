@@ -40,13 +40,13 @@ namespace Tranusy {
 			}
 		}
 	private: System::Windows::Forms::Panel^ panel1;
-	private: System::Windows::Forms::TextBox^ info;
+	public: System::Windows::Forms::TextBox^ info;
 	protected:
 
 	private: System::Windows::Forms::TableLayoutPanel^ tableLayoutPanel1;
 	private: System::Windows::Forms::TextBox^ result;
 
-	private: System::Windows::Forms::TextBox^ data;
+	public: System::Windows::Forms::TextBox^ data;
 
 	private: System::Windows::Forms::Button^ button_s;
 

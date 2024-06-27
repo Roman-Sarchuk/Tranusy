@@ -38,6 +38,11 @@ namespace Tranusy {
 				delete components;
 			}
 		}
+	private: Tranusy::Simple^ frm_s;
+	private: Tranusy::Muiltiple^ frm_m;
+	private: Tranusy::SimpleHistory^ frm_sh;
+	private: Tranusy::MuiltiplehHistory^ frm_mh;
+
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	protected:
 	private: System::Windows::Forms::ToolStripMenuItem^ fileToolStripMenuItem;
@@ -102,14 +107,16 @@ namespace Tranusy {
 			// saveToolStripMenuItem
 			// 
 			this->saveToolStripMenuItem->Name = L"saveToolStripMenuItem";
-			this->saveToolStripMenuItem->Size = System::Drawing::Size(137, 26);
+			this->saveToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->saveToolStripMenuItem->Text = L"Save";
+			this->saveToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::saveToolStripMenuItem_Click);
 			// 
 			// importToolStripMenuItem
 			// 
 			this->importToolStripMenuItem->Name = L"importToolStripMenuItem";
-			this->importToolStripMenuItem->Size = System::Drawing::Size(137, 26);
+			this->importToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->importToolStripMenuItem->Text = L"Import";
+			this->importToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::importToolStripMenuItem_Click);
 			// 
 			// modeToolStripMenuItem
 			// 
@@ -186,14 +193,14 @@ namespace Tranusy {
 			this->Size = System::Drawing::Size(300, 230);
 
 			// Put the mod form
-			Tranusy::Simple^ frm = gcnew Tranusy::Simple();
-			frm->TopLevel = false;
-			frm->Dock = System::Windows::Forms::DockStyle::Fill;
+			frm_s = gcnew Tranusy::Simple();
+			frm_s->TopLevel = false;
+			frm_s->Dock = System::Windows::Forms::DockStyle::Fill;
 			if (mainPanel->Controls->Count > 0)
 				mainPanel->Controls->Clear();
-			mainPanel->Controls->Add(frm);
-			frm->BringToFront();
-			frm->Show();
+			mainPanel->Controls->Add(frm_s);
+			frm_s->BringToFront();
+			frm_s->Show();
 		}
 		else if (toolStripComboBox1->SelectedIndex == 1 && !showStepToolStripMenuItem->Checked)	// m
 		{
@@ -207,14 +214,14 @@ namespace Tranusy {
 			this->Size = System::Drawing::Size(350, 350);
 
 			// Put the mod form
-			Tranusy::Muiltiple^ frm = gcnew Tranusy::Muiltiple();
-			frm->TopLevel = false;
-			frm->Dock = System::Windows::Forms::DockStyle::Fill;
+			frm_m = gcnew Tranusy::Muiltiple();
+			frm_m->TopLevel = false;
+			frm_m->Dock = System::Windows::Forms::DockStyle::Fill;
 			if (mainPanel->Controls->Count > 0)
 				mainPanel->Controls->Clear();
-			mainPanel->Controls->Add(frm);
-			frm->BringToFront();
-			frm->Show();
+			mainPanel->Controls->Add(frm_m);
+			frm_m->BringToFront();
+			frm_m->Show();
 		}
 		else if (toolStripComboBox1->SelectedIndex == 0 && showStepToolStripMenuItem->Checked)	// sh
 		{
@@ -228,14 +235,14 @@ namespace Tranusy {
 			this->Size = System::Drawing::Size(580, 230);
 
 			// Put the mod form
-			Tranusy::SimpleHistory^ frm = gcnew Tranusy::SimpleHistory();
-			frm->TopLevel = false;
-			frm->Dock = System::Windows::Forms::DockStyle::Fill;
+			frm_sh = gcnew Tranusy::SimpleHistory();
+			frm_sh->TopLevel = false;
+			frm_sh->Dock = System::Windows::Forms::DockStyle::Fill;
 			if (mainPanel->Controls->Count > 0)
 				mainPanel->Controls->Clear();
-			mainPanel->Controls->Add(frm);
-			frm->BringToFront();
-			frm->Show();
+			mainPanel->Controls->Add(frm_sh);
+			frm_sh->BringToFront();
+			frm_sh->Show();
 		}
 		else if (toolStripComboBox1->SelectedIndex == 1 && showStepToolStripMenuItem->Checked)	// mh
 		{
@@ -249,14 +256,14 @@ namespace Tranusy {
 			this->Size = System::Drawing::Size(600, 300);
 
 			// Put the mod form
-			Tranusy::MuiltiplehHistory^ frm = gcnew Tranusy::MuiltiplehHistory();
-			frm->TopLevel = false;
-			frm->Dock = System::Windows::Forms::DockStyle::Fill;
+			frm_mh = gcnew Tranusy::MuiltiplehHistory();
+			frm_mh->TopLevel = false;
+			frm_mh->Dock = System::Windows::Forms::DockStyle::Fill;
 			if (mainPanel->Controls->Count > 0)
 				mainPanel->Controls->Clear();
-			mainPanel->Controls->Add(frm);
-			frm->BringToFront();
-			frm->Show();
+			mainPanel->Controls->Add(frm_mh);
+			frm_mh->BringToFront();
+			frm_mh->Show();
 		}
 	}
 	private: System::Void showStepToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -267,6 +274,36 @@ namespace Tranusy {
 	private: System::Void toolStripComboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) 
 	{
 		changeMod();
+	}
+	private: System::Void importToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		OpenFileDialog^ openFileDialog = gcnew OpenFileDialog();
+		openFileDialog->Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+
+		if (openFileDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			String^ filePath = openFileDialog->FileName;
+
+			if (toolStripComboBox1->SelectedIndex == 1 && !showStepToolStripMenuItem->Checked)		// m
+				this->frm_m->data->Text = System::IO::File::ReadAllText(filePath);
+			else if (toolStripComboBox1->SelectedIndex == 1 && showStepToolStripMenuItem->Checked)	// mh
+				this->frm_mh->data->Text = System::IO::File::ReadAllText(filePath);
+		}
+	}
+	private: System::Void saveToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		SaveFileDialog^ saveFileDialog = gcnew SaveFileDialog();
+		saveFileDialog->Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+
+		if (saveFileDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			String^ filePath = saveFileDialog->FileName;
+
+			if (toolStripComboBox1->SelectedIndex == 0 && showStepToolStripMenuItem->Checked)	// sh
+				System::IO::File::WriteAllText(filePath, this->frm_sh->info->Text);
+			else if (toolStripComboBox1->SelectedIndex == 1 && showStepToolStripMenuItem->Checked)	// mh
+				System::IO::File::WriteAllText(filePath, this->frm_mh->info->Text);
+		}
 	}
 };
 }
