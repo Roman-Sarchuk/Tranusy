@@ -15,6 +15,7 @@ namespace UIcppProject
     string Converter::convert()
     {
         info.clear();
+        res.clear();
 
         try
         {
@@ -29,12 +30,12 @@ namespace UIcppProject
             {
                 res = num;
                 info = num + "[" + to_string(fromSys) + "]";
-                info += " = " + info + '\n';
+                info += " = " + info + "\r\n";
             }
             else
             {
                 toDecimal();
-                info.append("\n\n");
+                info.append("\r\n\r\n");
                 num = res;
                 fromDecimal();
             }
@@ -93,7 +94,7 @@ namespace UIcppProject
         }
 
         // calc whole res
-        long long digit, wproduct;
+        long long digit{}, wproduct{};
         for (int i = 0, dr = (int)wholePart.size() - 1; dr >= 0; i++, dr--)
         {
             if (wholePart[i] >= 'A')
@@ -115,7 +116,7 @@ namespace UIcppProject
         if (isFloat) {
             piece1.append(" + ");
             piece2.append(" + ");
-            double fproduct;
+            double fproduct{};
             for (int i = 0, dr = -1, end = -((int)fractionalPart.size()); dr >= end; i++, dr--)
             {
                 if (fractionalPart[i] >= 'A')
@@ -144,7 +145,7 @@ namespace UIcppProject
         // form the info
         info.append(num + "[" + to_string(fromSys) + "] = ");
         info.append(piece1 + " = " + piece2);
-        info.append(" = " + res + "[10]\n");
+        info.append(" = " + res + "[10]\r\n");
 
         info.append((isNegative ? "-" : "") + num + "[" + to_string(fromSys) + "] = ");
         if (isNegative) res = "-" + res;
@@ -195,7 +196,7 @@ namespace UIcppProject
 
         // calc whole res
         partRes.first.append(to_string(wholePart) + "[10] = ");
-        int rem;
+        int rem{};
         while (wholePart != 0)
         {
             rem = wholePart % toSys;
@@ -203,14 +204,14 @@ namespace UIcppProject
 
             wholeAct.append(to_string(wholePart) + " / " + to_string(toSys) + " = ");
             wholePart /= toSys;
-            wholeAct.append(to_string(wholePart) + " (" + to_string(rem) + ")\n");
+            wholeAct.append(to_string(wholePart) + " (" + to_string(rem) + ")\r\n");
         }
 
         // calc fractional res
         if (isFloat) {
             partRes.second.append("0." + to_string(fractionalPart) + "[10] = ");
             string part{};
-            char digit;
+            char digit{};
             double fractional = stod("0." + to_string(fractionalPart));
             for (size_t i = accuracy; fractionalPart != 0 && accuracy > 0; accuracy--)
             {
@@ -224,7 +225,7 @@ namespace UIcppProject
                 whole.push(digit);
                 fractionalAct.append(" (");
                 fractionalAct.push_back(digit);
-                fractionalAct.append(")\n");
+                fractionalAct.append(")\r\n");
 
                 part = to_string(fractional);   // get fraction without whole digit
                 part.erase(0, part.find('.') + 1);
@@ -256,9 +257,9 @@ namespace UIcppProject
             partRes.second.append("0." + fractionalRes + (isInfinite ? "..." : "") + "[" + to_string(toSys) + "]");
         }
 
-        info.append(wholeAct + partRes.first + "\n\n");
+        info.append(wholeAct + partRes.first + "\r\n\r\n");
         if (isFloat)
-            info.append(fractionalAct + partRes.second + "\n\n");
+            info.append(fractionalAct + partRes.second + "\r\n\r\n");
         res = isNegative ? "-" : "";
         res += isFloat ? wholeRes + "." + fractionalRes : wholeRes;
         info.append((isNegative ? "-" : "") + num + "[10] = " + res + (isInfinite ? "..." : "") + "[" + to_string(toSys) + "]");
@@ -286,7 +287,7 @@ namespace UIcppProject
     {
         if (!verifyBase(base))
         {
-            string message = "Value must be in range(" + to_string(getRange().first) + ", " + to_string(getRange().second) + ")";
+            string message = "Value " + to_string(base) + " must be in range(" + to_string(getRange().first) + ", " + to_string(getRange().second) + ")";
             System::String^ errorMessage = gcnew System::String(message.c_str());
             System::Exception^ exp = gcnew System::Exception(errorMessage);
             throw exp;
@@ -299,7 +300,7 @@ namespace UIcppProject
     {
         if (!verifyBase(base))
         {
-            string message = "Value must be in range(" + to_string(getRange().first) + " to " + to_string(getRange().second) + ")";
+            string message = "Value " + to_string(base) + " must be in range(" + to_string(getRange().first) + " to " + to_string(getRange().second) + ")";
             System::String^ errorMessage = gcnew System::String(message.c_str());
             System::Exception^ exp = gcnew System::Exception(errorMessage);
             throw exp;
