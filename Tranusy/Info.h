@@ -60,6 +60,7 @@ namespace Tranusy {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Info::typeid));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->englishToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ukraineToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -113,6 +114,7 @@ namespace Tranusy {
 			this->ClientSize = System::Drawing::Size(686, 532);
 			this->Controls->Add(this->appInfo);
 			this->Controls->Add(this->menuStrip1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"Info";
 			this->Text = L"Info";

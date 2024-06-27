@@ -88,6 +88,7 @@ namespace Tranusy {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->fileToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->saveToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -109,7 +110,7 @@ namespace Tranusy {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(338, 30);
+			this->menuStrip1->Size = System::Drawing::Size(338, 28);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -120,20 +121,20 @@ namespace Tranusy {
 					this->importToolStripMenuItem
 			});
 			this->fileToolStripMenuItem->Name = L"fileToolStripMenuItem";
-			this->fileToolStripMenuItem->Size = System::Drawing::Size(46, 26);
+			this->fileToolStripMenuItem->Size = System::Drawing::Size(46, 24);
 			this->fileToolStripMenuItem->Text = L"File";
 			// 
 			// saveToolStripMenuItem
 			// 
 			this->saveToolStripMenuItem->Name = L"saveToolStripMenuItem";
-			this->saveToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->saveToolStripMenuItem->Size = System::Drawing::Size(137, 26);
 			this->saveToolStripMenuItem->Text = L"Save";
 			this->saveToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::saveToolStripMenuItem_Click);
 			// 
 			// importToolStripMenuItem
 			// 
 			this->importToolStripMenuItem->Name = L"importToolStripMenuItem";
-			this->importToolStripMenuItem->Size = System::Drawing::Size(224, 26);
+			this->importToolStripMenuItem->Size = System::Drawing::Size(137, 26);
 			this->importToolStripMenuItem->Text = L"Import";
 			this->importToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::importToolStripMenuItem_Click);
 			// 
@@ -144,7 +145,7 @@ namespace Tranusy {
 					this->showStepToolStripMenuItem
 			});
 			this->modeToolStripMenuItem->Name = L"modeToolStripMenuItem";
-			this->modeToolStripMenuItem->Size = System::Drawing::Size(62, 26);
+			this->modeToolStripMenuItem->Size = System::Drawing::Size(62, 24);
 			this->modeToolStripMenuItem->Text = L"Mode";
 			// 
 			// toolStripComboBox1
@@ -166,7 +167,7 @@ namespace Tranusy {
 			// infoToolStripMenuItem
 			// 
 			this->infoToolStripMenuItem->Name = L"infoToolStripMenuItem";
-			this->infoToolStripMenuItem->Size = System::Drawing::Size(49, 26);
+			this->infoToolStripMenuItem->Size = System::Drawing::Size(49, 24);
 			this->infoToolStripMenuItem->Text = L"Info";
 			this->infoToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::infoToolStripMenuItem_Click);
 			// 
@@ -188,10 +189,11 @@ namespace Tranusy {
 			this->ClientSize = System::Drawing::Size(338, 291);
 			this->Controls->Add(this->mainPanel);
 			this->Controls->Add(this->menuStrip1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
-			this->Name = L"MainForm";
+			this->Name = L"Tranusy";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"MainForm";
+			this->Text = L" Tranusy";
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
