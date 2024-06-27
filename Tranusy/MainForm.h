@@ -26,6 +26,24 @@ namespace Tranusy {
 			//
 			//TODO: Add the constructor code here
 			//
+			// Switch StripMenuItems access
+			saveToolStripMenuItem->Enabled = false;
+			importToolStripMenuItem->Enabled = false;
+
+			// Set windows size
+			this->MaximumSize = System::Drawing::Size(100000, 230);
+			this->MinimumSize = System::Drawing::Size(300, 230);
+			this->Size = System::Drawing::Size(300, 230);
+
+			// Put the mod form
+			frm_s = gcnew Tranusy::Simple();
+			frm_s->TopLevel = false;
+			frm_s->Dock = System::Windows::Forms::DockStyle::Fill;
+			if (mainPanel->Controls->Count > 0)
+				mainPanel->Controls->Clear();
+			mainPanel->Controls->Add(frm_s);
+			frm_s->BringToFront();
+			frm_s->Show();
 		}
 
 	protected:
