@@ -150,6 +150,7 @@
     <ClInclude Include="MultiplehHistory.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Simple.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -176,6 +177,12 @@
     <EmbeddedResource Include="SimpleHistory.resx">
       <DependentUpon>SimpleHistory.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Tranusy.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\Roman\Desktop\logoTranusy.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
