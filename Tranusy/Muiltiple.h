@@ -184,10 +184,13 @@ namespace Tranusy {
 			counter++;
 			if (!verifyLine(line[line.size() - 1] == '\r' ? line.substr(0, line.size() - 1) : line))
 			{
+				array<String^>^ lines = data->Lines;
+				lines[counter - 1] = "(!!!) " + lines[counter - 1];
+				data->Lines = lines;
 				MessageBox::Show(msclr::interop::marshal_as<System::String^>("Не вдалося сконвертувати число!\nрядок #" + to_string(counter) + ": \"" + line + "\"\n\nПеревірте коректність рядка та повторіть спробу. Шаблон для вводу рядка: \"число [з] [у]\"; де 'число' будь-яке (дійсне), 'з' натуральне (2-36), 'у' натуральне (2-36)\n\nПриклад рядка: -A34F3.1B [16] [2]"), "Помилка", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 				return;
 			}
-
+			
 			std::vector<string> tokens;
 			size_t pos = 0;
 
