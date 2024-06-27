@@ -300,14 +300,21 @@ namespace Tranusy {
 		OpenFileDialog^ openFileDialog = gcnew OpenFileDialog();
 		openFileDialog->Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
 
-		if (openFileDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		try
 		{
-			String^ filePath = openFileDialog->FileName;
+			if (openFileDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			{
+				String^ filePath = openFileDialog->FileName;
 
-			if (toolStripComboBox1->SelectedIndex == 1 && !showStepToolStripMenuItem->Checked)		// m
-				this->frm_m->data->Text = System::IO::File::ReadAllText(filePath);
-			else if (toolStripComboBox1->SelectedIndex == 1 && showStepToolStripMenuItem->Checked)	// mh
-				this->frm_mh->data->Text = System::IO::File::ReadAllText(filePath);
+				if (toolStripComboBox1->SelectedIndex == 1 && !showStepToolStripMenuItem->Checked)		// m
+					this->frm_m->data->Text = System::IO::File::ReadAllText(filePath);
+				else if (toolStripComboBox1->SelectedIndex == 1 && showStepToolStripMenuItem->Checked)	// mh
+					this->frm_mh->data->Text = System::IO::File::ReadAllText(filePath);
+			}
+		}
+		catch (...)
+		{
+			MessageBox::Show("Не вдалося імпортувати дані файла!", "Помилка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
 	private: System::Void saveToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -315,14 +322,21 @@ namespace Tranusy {
 		SaveFileDialog^ saveFileDialog = gcnew SaveFileDialog();
 		saveFileDialog->Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
 
-		if (saveFileDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		try
 		{
-			String^ filePath = saveFileDialog->FileName;
+			if (saveFileDialog->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+			{
+				String^ filePath = saveFileDialog->FileName;
 
-			if (toolStripComboBox1->SelectedIndex == 0 && showStepToolStripMenuItem->Checked)	// sh
-				System::IO::File::WriteAllText(filePath, this->frm_sh->info->Text);
-			else if (toolStripComboBox1->SelectedIndex == 1 && showStepToolStripMenuItem->Checked)	// mh
-				System::IO::File::WriteAllText(filePath, this->frm_mh->info->Text);
+				if (toolStripComboBox1->SelectedIndex == 0 && showStepToolStripMenuItem->Checked)	// sh
+					System::IO::File::WriteAllText(filePath, this->frm_sh->info->Text);
+				else if (toolStripComboBox1->SelectedIndex == 1 && showStepToolStripMenuItem->Checked)	// mh
+					System::IO::File::WriteAllText(filePath, this->frm_mh->info->Text);
+			}
+		}
+		catch (...)
+		{
+			MessageBox::Show("Не вдалося зберегти дані!", "Помилка", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
 	private: System::Void infoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
