@@ -124,6 +124,7 @@
   <ItemGroup>
     <ClCompile Include="Converter.cpp" />
     <ClCompile Include="DataVerification.cpp" />
+    <ClCompile Include="Info.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="Muiltiple.cpp" />
     <ClCompile Include="MuiltiplehHistory.cpp" />
@@ -133,6 +134,9 @@
   <ItemGroup>
     <ClInclude Include="Converter.h" />
     <ClInclude Include="DataVerification.h" />
+    <ClInclude Include="Info.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MainForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -150,6 +154,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Info.resx">
+      <DependentUpon>Info.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>
     </EmbeddedResource>

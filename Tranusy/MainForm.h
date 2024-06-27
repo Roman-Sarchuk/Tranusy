@@ -3,6 +3,7 @@
 #include "Muiltiple.h"
 #include "SimpleHistory.h"
 #include "MuiltiplehHistory.h"
+#include "Info.h"
 
 namespace Tranusy {
 
@@ -90,7 +91,7 @@ namespace Tranusy {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(338, 28);
+			this->menuStrip1->Size = System::Drawing::Size(338, 30);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -101,7 +102,7 @@ namespace Tranusy {
 					this->importToolStripMenuItem
 			});
 			this->fileToolStripMenuItem->Name = L"fileToolStripMenuItem";
-			this->fileToolStripMenuItem->Size = System::Drawing::Size(46, 24);
+			this->fileToolStripMenuItem->Size = System::Drawing::Size(46, 26);
 			this->fileToolStripMenuItem->Text = L"File";
 			// 
 			// saveToolStripMenuItem
@@ -125,7 +126,7 @@ namespace Tranusy {
 					this->showStepToolStripMenuItem
 			});
 			this->modeToolStripMenuItem->Name = L"modeToolStripMenuItem";
-			this->modeToolStripMenuItem->Size = System::Drawing::Size(62, 24);
+			this->modeToolStripMenuItem->Size = System::Drawing::Size(62, 26);
 			this->modeToolStripMenuItem->Text = L"Mode";
 			// 
 			// toolStripComboBox1
@@ -147,8 +148,9 @@ namespace Tranusy {
 			// infoToolStripMenuItem
 			// 
 			this->infoToolStripMenuItem->Name = L"infoToolStripMenuItem";
-			this->infoToolStripMenuItem->Size = System::Drawing::Size(49, 24);
+			this->infoToolStripMenuItem->Size = System::Drawing::Size(49, 26);
 			this->infoToolStripMenuItem->Text = L"Info";
+			this->infoToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainForm::infoToolStripMenuItem_Click);
 			// 
 			// mainPanel
 			// 
@@ -304,6 +306,11 @@ namespace Tranusy {
 			else if (toolStripComboBox1->SelectedIndex == 1 && showStepToolStripMenuItem->Checked)	// mh
 				System::IO::File::WriteAllText(filePath, this->frm_mh->info->Text);
 		}
+	}
+	private: System::Void infoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) 
+	{
+		Tranusy::Info^ frm_info = gcnew Tranusy::Info();
+		frm_info->ShowDialog();
 	}
 };
 }
